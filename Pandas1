@@ -1,0 +1,32 @@
+import pandas as pd
+
+# Loading the CSV file into a DataFrame
+file_path = "annual-enterprise-survey-2023-financial-year-provisional.csv"
+df = pd.read_csv(file_path)
+
+# 1. Filtering Data
+# Filter the data for the year 2023 and a specific industry ("All industries")
+filtered_df = df[(df['Year'] == 2023) & (df['Industry_name_NZSIOC'] == 'All industries')]
+
+# 2. Handling Missing Values
+# Check for missing values in the DataFrame
+missing_values = filtered_df.isnull().sum()
+
+# Fill missing values in the 'Value' column with the mean value of the column
+filtered_df['Value'] = pd.to_numeric(filtered_df['Value'], errors='coerce')
+filtered_df['Value'].fillna(filtered_df['Value'].mean(), inplace=True)
+
+# 3. Calculating Summary Statistics
+# Calculate mean, median, and sum for the 'Value' column
+mean_value = filtered_df['Value'].mean()
+median_value = filtered_df['Value'].median()
+sum_value = filtered_df['Value'].sum()
+
+# Print summary statistics
+summary_stats = {
+    "Mean Value": mean_value,
+    "Median Value": median_value,
+    "Sum Value": sum_value
+}
+
+summary_stats
