@@ -1,0 +1,35 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+data = {
+    'Category': ['A', 'B', 'C', 'D', 'E'],
+    'Value1': [5, 7, 8, 5, 6],
+    'Value2': [2, 3, 5, 7, 6]
+}
+df = pd.DataFrame(data)
+plt.figure(figsize=(10, 6))
+
+# Plotting the bar chart
+plt.bar(df['Category'], df['Value1'], color='green', label='Value1')
+
+# Customizing the chart
+plt.title('Bar Chart of Categories', fontsize=16)
+plt.xlabel('Category', fontsize=14)
+plt.ylabel('Value', fontsize=14)
+plt.legend()
+
+# Display the chart
+plt.show()
+plt.figure(figsize=(10, 6))
+
+# Plotting the line chart
+plt.plot(df['Category'], df['Value1'], color='red', label='Value1')
+plt.plot(df['Category'], df['Value2'],  color='green', label='Value2')
+
+# Customizing the chart
+plt.title('Line Chart of Categories', fontsize=16)
+plt.xlabel('Category', fontsize=14)
+plt.ylabel('Value', fontsize=14)
+plt.legend()
+
+# Display the chart
+plt.show()
