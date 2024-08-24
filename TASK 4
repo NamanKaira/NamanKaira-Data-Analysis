@@ -1,0 +1,21 @@
+import pandas as pd
+import seaborn as sns
+from matplotlib import pyplot as plt
+df = pd.read_csv("List of Countries by Sugarcane Production.csv")
+df.head()
+plt.figure(figsize = (10,8))
+plt.subplot(2,2,1)
+sns.boxplot(df["Production(Tons)"])
+plt.title("Production(Tons)")
+plt.subplot(2,2,2)
+sns.boxplot(df["Production_per_person(Kg)"])
+plt.title("Production_per_person(Kg)")
+plt.subplot(2,2,3)
+sns.boxplot(df["Acreage(Hectare)"])
+plt.title("Acreage(Hectare)")
+plt.subplot(2,2,4)
+sns.boxplot(df["Yield(Kg/Hectare)"])
+plt.title("Yield(Kg/Hectare)")
+plt.show()
+df.corr()
+sns.heatmap(df.corr(), annot = True, cmap="Greens")
